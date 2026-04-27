@@ -15,7 +15,6 @@ export async function submitReportAction(payload: ReportActionPayload) {
     throw new Error("Missing required report fields");
   }
 
-  // Placeholder server action path for production workflows.
   await db.report.create({
     data: {
       busId: payload.busId,
@@ -23,6 +22,7 @@ export async function submitReportAction(payload: ReportActionPayload) {
       category: payload.category,
       description: payload.description,
       lang: payload.lang,
+      timestamp: new Date(), // ← זה התיקון שחסר
     },
   });
 
